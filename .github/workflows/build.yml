@@ -17,6 +17,11 @@ jobs:
       - name: Clone CoreProtect
         run: git clone https://github.com/PlayPro/CoreProtect.git
 
+      - name: Patch pom.xml
+        working-directory: ./CoreProtect
+        run: |
+          sed -i '7s|<project.branch></project.branch>|<project.branch>development</project.branch>|' pom.xml
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
